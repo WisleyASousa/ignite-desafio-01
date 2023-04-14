@@ -1,9 +1,13 @@
+import { Header } from './components/Header'
+import { NewItem } from './components/NewItem'
 import './global.css'
 
 export function App() {
   return (
     <div>
-      <h1>Inicio</h1>
+      <Header />
+      <NewItem />
+      
     </div>
   )
 }

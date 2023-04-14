@@ -1,0 +1,16 @@
+.headerContainer {
+  background: var(--gray-700);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+}
+.headerContainer h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--blue);
+}
+.headerContainer h1 span {
+  color: var(--purple-dark);
+}
