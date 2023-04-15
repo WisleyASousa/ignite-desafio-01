@@ -5,7 +5,8 @@ export function NewItem() {
   return (
     <div className={styles.containerForm}>
       <form className={styles.itemForm}>
-        <textarea className={styles.boxText}
+        <textarea 
+          className={styles.boxText}
           placeholder='Nova tarefa'
           name='newItem'
           />

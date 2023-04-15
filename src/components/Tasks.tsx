@@ -12,20 +12,31 @@ const tasksList = [
 export function Tasks() {
   return (
       <div className={styles.containerTasks}>
+        
         <div className={styles.infoContainer}>
           <div className={styles.infoTasks}>
             <p>Tarefas criadas</p><span>0</span>
           </div>
+
           <div className={styles.infoTasks}>
             <p className={styles.tasksCompleted}>Concluídas</p><span>0</span>
           </div>
         </div>
+
         <div className={styles.boxTasks}>
           <img src={clipboard} alt='Icone de uma caderneta' />
           <strong>Você ainda não tem tarefas cadastradas</strong>
           <p>Crie tarefas e organize seus itens a fazer</p>
         </div>
-        <TasksList />
+
+        <TasksList
+          content={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, tempora.'}
+        />
+        <TasksList
+          content={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, tempora.'}
+        /><TasksList
+        content={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, tempora.'}
+      />
       </div>
     )
 }
