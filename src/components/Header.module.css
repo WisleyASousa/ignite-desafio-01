@@ -6,6 +6,9 @@
   justify-content: center;
   gap: .75rem;
 }
+.headerContainer h1, img {
+  margin-top: -10px;
+}
 .headerContainer h1 {
   font-size: 2.5rem;
   font-weight: 900;

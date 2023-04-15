@@ -1,0 +1,11 @@
+.infoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.infoTasks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+}
