@@ -7,9 +7,8 @@
   display: flex;
   justify-content: center;
   gap: .5rem;
-  width: 740px;
-  height: 70px;
-  margin: 0 .4rem;
+  height: 65px;
+  width: 100%;
   margin-top: calc(0px - 1.5rem - 10px);
 
 }
@@ -47,8 +46,20 @@
   border: none;
   transition: all .2s ease-out;
   border: 1px solid var(--gray-700);
-
 }
 .itemForm button:hover {
   background: var(--blue);
+}
+
+@media (min-width: 768px) {
+  .itemForm .boxText {
+    font-size: 1.3rem;
+  }
+  .boxText::placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:  var(--gray-300);
+    font-size: 1.3rem;
+  }
 }
