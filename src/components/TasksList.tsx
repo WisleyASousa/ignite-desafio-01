@@ -3,18 +3,22 @@ import { Trash } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 interface TasksListProps {
+  id: string; 
   content: string;
-  checked?: boolean;
-
+  checked: boolean;
+  onDeleteTasks: (tasks: string) => void;
 }
 
-export function TasksList({ content, checked, ...props }: TasksListProps) {
+export function TasksList({ id, content, checked, onDeleteTasks }: TasksListProps) {
 
   const defaultChecked = checked ? checked : false;
   const [isChecked, setIsChecked] = useState(defaultChecked);
 
   function handleCheckboxClick() {
     setIsChecked(!isChecked);
+  }
+  function handleDeleteTasks() {
+    onDeleteTasks(id);
   }
 
   return (
@@ -25,12 +29,17 @@ export function TasksList({ content, checked, ...props }: TasksListProps) {
             onChange={handleCheckboxClick}
             type='checkbox'
             checked={isChecked}
-            {...props}
           />
         </label>
       </div>
       <p className={isChecked ? styles.textTasksSucess : styles.textTasks} >{content}</p>
-      <Trash className={styles.trashSvg} size={24} />
+      <button 
+        title='Deletar Tarefa' 
+        className={styles.trashSvg} 
+        onClick={handleDeleteTasks}
+      >
+        <Trash size={24} />
+      </button>
     </div>
   )
 }

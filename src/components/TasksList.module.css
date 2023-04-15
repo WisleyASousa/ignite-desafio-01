@@ -12,6 +12,15 @@
 .containerList p {
   flex: 1;
 }
+.trashSvg {
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 4px;
+}
+
 .trashSvg:hover {
   width: 24px;
   height: 24px;
