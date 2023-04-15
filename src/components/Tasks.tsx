@@ -1,4 +1,5 @@
 import styles from './Tasks.module.css';
+import clipboard from '../assets/clipboard.svg'
 
 export function Tasks() {
   return (
@@ -12,7 +13,9 @@ export function Tasks() {
           </div>
         </div>
         <div className={styles.boxTasks}>
-
+          <img src={clipboard} alt='Icone de uma caderneta' />
+          <strong>Você ainda não tem tarefas cadastradas</strong>
+          <p>Crie tarefas e organize seus itens a fazer</p>
         </div>
 
       </div>
