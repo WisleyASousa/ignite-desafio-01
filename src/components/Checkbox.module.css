@@ -1,4 +1,7 @@
 .checkboxWrapper input {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
   -webkit-appearance: none;
   appearance: none;
   width: 1.3rem;
@@ -10,10 +13,18 @@
   cursor: pointer;
 }
 
+.checkboxWrapper input:hover {
+  border: 3px solid var(--blue-dark);
+}
+
 input:checked {
   background: var(--purple-dark);
   border-color: var(--purple-dark);
   position: relative;
+}
+input:checked:hover {
+  background: var(--purple);
+  border-color: var(--purple);
 }
 input:checked::before {
   content: "\2714";
