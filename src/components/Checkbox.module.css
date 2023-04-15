@@ -1,0 +1,25 @@
+.checkboxWrapper input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 999px;
+  margin-right: .5rem;
+  border: 3px solid var(--blue);
+  outline: none;
+  cursor: pointer;
+}
+
+input:checked {
+  background: var(--purple-dark);
+  border-color: var(--purple-dark);
+  position: relative;
+}
+input:checked::before {
+  content: "\2714";
+  font-size: 14px;
+  color: var(--gray-100);
+  position: absolute;
+  right: 1px;
+  top: -2px;
+}

@@ -45,10 +45,15 @@
   justify-content: center;
   height: 245px;
   line-height: 1.4;
+
+  display: none;
 }
 .boxTasks img {
   margin-bottom: 1rem;
 }
+
+
+
 @media (min-width: 768px) {
 
 }
