@@ -36,8 +36,12 @@ export function Tasks() {
 
   const [tasks, setTasks] = useState(tasksList);
 
+
+  
+
   function deleteTasks(tasksToDelete: string) {
     console.log(tasksToDelete)
+    console.log(tasks)
     const tasksWithoutDeleteOne = tasks.filter(tasks => {
       return tasks.id !== tasksToDelete
     })
@@ -64,7 +68,7 @@ export function Tasks() {
           <p>Crie tarefas e organize seus itens a fazer</p>
         </div>
 
-        {tasksList.map(task => {
+        {tasks.map(task => {
           return (
               <TasksList
                 key={task.id}
