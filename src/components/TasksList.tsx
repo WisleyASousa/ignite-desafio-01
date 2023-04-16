@@ -40,7 +40,9 @@ export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusCh
           />
         </label>
       </div>
-      <p className={isChecked ? styles.textTasksSucess : styles.textTasks} >{content}</p>
+      <p className={isChecked ? styles.textTasksSucess : styles.textTasks} >
+        {content}
+      </p>
       {onDisable ? null : <button 
         title='Deletar Tarefa' 
         className={styles.trashSvg} 
