@@ -7,39 +7,45 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { PlusCircle } from '@phosphor-icons/react'
 
 
-const tasksList = [
-  {
-    id: uuidv4(),
-    content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, tempora.',
-    status: false
-  },
-  {
-    id: uuidv4(),
-    content: 'Lorem ipsum tetur adipisicing elit. Possimus, tempora.',
-    status: false
-  },
-  {
-    id: uuidv4(),
-    content: 'Lorem icing elit. Possimus, tempora.',
-    status: true
-  },
-  {
-    id: uuidv4(),
-    content: ' consectetur adipisicing elit. Possimus, tempora.',
-    status: false
-  },
-  {
-    id: uuidv4(),
-    content: 'Lorem ipsum dolor sit, amet ccing elit. Possimus, tempora.',
-    status: false
-  }
-]
+// const tasksList = [
+//   {
+//     id: uuidv4(),
+//     content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, tempora.',
+//     status: false
+//   },
+//   {
+//     id: uuidv4(),
+//     content: 'Lorem ipsum tetur adipisicing elit. Possimus, tempora.',
+//     status: false
+//   },
+//   {
+//     id: uuidv4(),
+//     content: 'Lorem icing elit. Possimus, tempora.',
+//     status: true
+//   },
+//   {
+//     id: uuidv4(),
+//     content: ' consectetur adipisicing elit. Possimus, tempora.',
+//     status: false
+//   },
+//   {
+//     id: uuidv4(),
+//     content: 'Lorem ipsum dolor sit, amet ccing elit. Possimus, tempora.',
+//     status: false
+//   }
+// ]
 
+interface TasksType {
+  id: string,
+  content: string,
+  status: boolean
+}
 
+export function Tasks({ id, content, status }:TasksType) {
 
-export function Tasks() {
+  const [tasks, setTasks] = useState<TasksType[]>([]);;
+  
 
-  const [tasks, setTasks] = useState(tasksList);
   const [newTaskText, setNewTaskText] = useState('')
 
 
