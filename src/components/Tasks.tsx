@@ -67,6 +67,7 @@ export function Tasks() {
     setTasks(tasksWithoutDeleteOne);
   }
 
+  const isNewTaskEmpty = newTaskText.length == 0;
   
   return (
       <div className={styles.containerTasks}>
@@ -81,7 +82,9 @@ export function Tasks() {
               onInvalid={handleNewTaskInvalid}
               required
             />
-            <button type='submit'>
+            <button 
+              disabled={isNewTaskEmpty} 
+              type='submit'>
               Criar
               <PlusCircle size={18} />
             </button>
