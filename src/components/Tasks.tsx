@@ -3,7 +3,7 @@ import clipboard from '../assets/clipboard.svg'
 import { TasksList } from './TasksList';
 import { v4 as uuidv4 } from 'uuid';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { PlusCircle } from '@phosphor-icons/react'
+import { Exclude, PlusCircle } from '@phosphor-icons/react'
 
 interface TasksType {
   id: string,
@@ -133,19 +133,27 @@ export function Tasks({ id, content, status }:TasksType) {
               <span>{tasksDeleted}</span>
           </div>
           {trashTasks.map(task => {
-              return (
-                <TasksList
-                  onDisable={true}
-                  key={task.id}
-                  id={task.id}
-                  checked={task.status}
-                  content={task.content}
-                  onDeleteTasks={deleteTasks}
-                  onTaskStatusChange={handleTaskStatusChange}
-                />
-              )
-            })}
+            return (
+              <TasksList
+                onDisable={true}
+                key={task.id}
+                id={task.id}
+                checked={task.status}
+                content={task.content}
+                onDeleteTasks={deleteTasks}
+                onTaskStatusChange={handleTaskStatusChange}
+              />
+            )
+          })}
+          {trashTasks.length === 0 && (
+            <div className={styles.boxTasks}>
+              <Exclude size={60} />
+              <strong>Você não deletou nem uma tarefa</strong>
+              <p>Tarefas deletadas serão mostradas aqui</p>
+            </div>
+          )}
         </div>
       </div>
     )
 }
+

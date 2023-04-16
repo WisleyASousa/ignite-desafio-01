@@ -35,11 +35,12 @@
 .spanCompleted {
   width: 66px !important;
 }
+
+
 .infoTasksDeleted {
   margin: 4rem 0 1rem 0;
   padding: 1rem 0;
   border-top: 1px solid var(--gray-400);
-  border-bottom: 1px solid var(--gray-400);
   display: flex;
   align-items: center;
   gap: .4rem;
@@ -88,7 +89,10 @@
 .boxTasks img {
   margin-bottom: 1rem;
 }
-
+.boxTasks svg {
+  margin-bottom: 1rem;
+  opacity: .5;
+}
 /* New task */
 .containerForm {
   display: flex;
