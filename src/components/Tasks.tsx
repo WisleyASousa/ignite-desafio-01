@@ -136,12 +136,13 @@ export function Tasks({ id, content, status }:TasksType) {
               <span>{tasksDeleted}</span>
             </div>
           </div>
-
-          <div className={styles.boxTasks}>
-            <img src={clipboard} alt='Icone de uma caderneta' />
-            <strong>Você ainda não tem tarefas cadastradas</strong>
-            <p>Crie tarefas e organize seus itens a fazer</p>
-          </div>
+          {tasks.length === 0 && (
+            <div className={styles.boxTasks}>
+              <img src={clipboard} alt='Icone de uma caderneta' />
+              <strong>Você ainda não tem tarefas cadastradas</strong>
+              <p>Crie tarefas e organize seus itens a fazer</p>
+            </div>
+          )}
 
           {tasks.map(task => {
             return (

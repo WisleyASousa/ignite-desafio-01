@@ -57,7 +57,7 @@
   height: 245px;
   line-height: 1.4;
 
-  display: none;
+  /* display: none; */
 }
 .boxTasks img {
   margin-bottom: 1rem;
