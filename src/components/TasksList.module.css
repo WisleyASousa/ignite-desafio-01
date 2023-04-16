@@ -55,8 +55,12 @@
   cursor: pointer;
 }
 
-.checkboxWrapper input:hover {
+.checkboxWrapper input:not(:disabled):hover {
   border: 3px solid var(--blue-dark);
+}
+
+.checkboxWrapper input:disabled, input:disabled:checked {
+  opacity: .4;
 }
 
 input:checked {
@@ -64,7 +68,7 @@ input:checked {
   border-color: var(--purple-dark);
   position: relative;
 }
-input:checked:hover {
+input:not(:disabled):checked:hover {
   background: var(--purple);
   border-color: var(--purple);
 }

@@ -35,9 +35,32 @@
 .spanCompleted {
   width: 66px !important;
 }
-.infoTasks .tasksDeleted {
+.infoTasksDeleted {
+  margin: 4rem 0 1rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--gray-400);
+  border-bottom: 1px solid var(--gray-400);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.infoTasksDeleted .tasksDeleted {
   color: var(--danger);
 }
+.infoTasksDeleted span {
+  background: var(--gray-400);
+  width: 32px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gray-200);
+  white-space: nowrap;
+}
+
 .infoTasks span {
   background: var(--gray-400);
   width: 32px;
@@ -61,7 +84,6 @@
   height: 245px;
   line-height: 1.4;
 
-  /* display: none; */
 }
 .boxTasks img {
   margin-bottom: 1rem;
@@ -117,7 +139,7 @@
   transition: all .2s ease-out;
   border: 1px solid var(--gray-700);
 }
-.itemForm button:disabled, .trashSvg:disabled {
+.itemForm button:disabled{
   opacity: .6;
   cursor: not-allowed;
 }

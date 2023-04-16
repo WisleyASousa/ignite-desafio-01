@@ -3,7 +3,6 @@ import clipboard from '../assets/clipboard.svg'
 import { TasksList } from './TasksList';
 import { v4 as uuidv4 } from 'uuid';
 import { ChangeEvent, FormEvent, useState } from 'react';
-// import { NewItem } from './NewItem';
 import { PlusCircle } from '@phosphor-icons/react'
 
 interface TasksType {
@@ -23,6 +22,8 @@ export function Tasks({ id, content, status }:TasksType) {
   const [tasksDeleted, setTasksDeleted] = useState(0);
 
   const [newTaskText, setNewTaskText] = useState('');
+
+  const [trashTasks, setTrashTasks] = useState<TasksType[]>([]);
 
 
   function handleCreateNewTask(event: FormEvent) {
@@ -46,6 +47,8 @@ export function Tasks({ id, content, status }:TasksType) {
     const tasksWithoutDeleteOne = tasks.filter(tasks => {
       return tasks.id !== tasksToDelete
     })
+
+    setTrashTasks([...trashTasks, tasks.find(task => task.id === tasksToDelete)!]);
     
     setTasks(tasksWithoutDeleteOne);
     setTasksDeleted(tasksDeleted + 1);
@@ -102,10 +105,7 @@ export function Tasks({ id, content, status }:TasksType) {
               <p className={styles.tasksCompleted}>Concluídas</p>
               <span className={styles.spanCompleted}>{`${tasksCompleted} de ${tasks.length}`}</span>
             </div>
-            <div className={styles.infoTasks}>
-              <p className={styles.tasksDeleted}>Deletadas</p>
-              <span>{tasksDeleted}</span>
-            </div>
+            
           </div>
           {tasks.length === 0 && (
             <div className={styles.boxTasks}>
@@ -118,6 +118,7 @@ export function Tasks({ id, content, status }:TasksType) {
           {tasks.map(task => {
             return (
               <TasksList
+                onDisable={false}
                 key={task.id}
                 id={task.id}
                 checked={task.status}
@@ -127,6 +128,23 @@ export function Tasks({ id, content, status }:TasksType) {
               />
             )
           })}
+          <div className={styles.infoTasksDeleted}>
+              <p className={styles.tasksDeleted}>Deletadas</p>
+              <span>{tasksDeleted}</span>
+          </div>
+          {trashTasks.map(task => {
+              return (
+                <TasksList
+                  onDisable={true}
+                  key={task.id}
+                  id={task.id}
+                  checked={task.status}
+                  content={task.content}
+                  onDeleteTasks={deleteTasks}
+                  onTaskStatusChange={handleTaskStatusChange}
+                />
+              )
+            })}
         </div>
       </div>
     )
