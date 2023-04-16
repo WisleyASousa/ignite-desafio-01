@@ -6,35 +6,6 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 // import { NewItem } from './NewItem';
 import { PlusCircle } from '@phosphor-icons/react'
 
-
-// const tasksList = [
-//   {
-//     id: uuidv4(),
-//     content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, tempora.',
-//     status: false
-//   },
-//   {
-//     id: uuidv4(),
-//     content: 'Lorem ipsum tetur adipisicing elit. Possimus, tempora.',
-//     status: false
-//   },
-//   {
-//     id: uuidv4(),
-//     content: 'Lorem icing elit. Possimus, tempora.',
-//     status: true
-//   },
-//   {
-//     id: uuidv4(),
-//     content: ' consectetur adipisicing elit. Possimus, tempora.',
-//     status: false
-//   },
-//   {
-//     id: uuidv4(),
-//     content: 'Lorem ipsum dolor sit, amet ccing elit. Possimus, tempora.',
-//     status: false
-//   }
-// ]
-
 interface TasksType {
   id: string,
   content: string,
@@ -79,7 +50,7 @@ export function Tasks({ id, content, status }:TasksType) {
     setTasks(tasksWithoutDeleteOne);
     setTasksDeleted(tasksDeleted + 1);
 
-    if (tasksCompleted > 0) {
+    if (tasksCompleted > 0 ) {
       setTasksCompleted(tasksCompleted - 1);
     }
   }
@@ -129,7 +100,7 @@ export function Tasks({ id, content, status }:TasksType) {
 
             <div className={styles.infoTasks}>
               <p className={styles.tasksCompleted}>Concluídas</p>
-              <span>{tasksCompleted}</span>
+              <span className={styles.spanCompleted}>{`${tasksCompleted} de ${tasks.length}`}</span>
             </div>
             <div className={styles.infoTasks}>
               <p className={styles.tasksDeleted}>Deletadas</p>

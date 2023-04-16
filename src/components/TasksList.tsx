@@ -43,6 +43,7 @@ export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusCh
         title='Deletar Tarefa' 
         className={styles.trashSvg} 
         onClick={handleDeleteTasks}
+        disabled={!isChecked}
       >
         <Trash size={24} />
       </button>

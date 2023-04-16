@@ -32,6 +32,9 @@
 .infoTasks .tasksCompleted {
   color: var(--purple);
 }
+.spanCompleted {
+  width: 66px !important;
+}
 .infoTasks .tasksDeleted {
   color: var(--danger);
 }
@@ -46,6 +49,7 @@
   font-size: 1rem;
   font-weight: 700;
   color: var(--gray-200);
+  white-space: nowrap;
 }
 
 .boxTasks {
@@ -113,7 +117,7 @@
   transition: all .2s ease-out;
   border: 1px solid var(--gray-700);
 }
-.itemForm button:disabled {
+.itemForm button:disabled, .trashSvg:disabled {
   opacity: .6;
   cursor: not-allowed;
 }

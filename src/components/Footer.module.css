@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-700);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  
+}
+.footer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+  font-size: .875rem;
+  padding: 1rem 0;
+  
+}
