@@ -2,6 +2,7 @@ import styles from './TasksList.module.css'
 import { Trash } from '@phosphor-icons/react';
 import { useState } from 'react';
 
+
 interface TasksListProps {
   id: string; 
   content: string;
@@ -27,6 +28,7 @@ export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusCh
     onDeleteTasks(id);
   }
 
+
   return (
     <div className={styles.containerList}>
       <div className={styles.checkboxWrapper}>
@@ -50,7 +52,7 @@ export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusCh
         disabled={!isChecked}
       >
         <Trash size={24} />
-      </button>} 
+      </button>}
     </div>
   )
 }
