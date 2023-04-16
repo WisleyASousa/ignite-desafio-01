@@ -7,12 +7,17 @@ interface TasksListProps {
   content: string;
   checked: boolean;
   onDeleteTasks: (tasks: string) => void;
+  onTaskStatusChange: (id: string, checked: boolean) => void
 }
 
-export function TasksList({ id, content, checked, onDeleteTasks }: TasksListProps) {
+export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusChange }: TasksListProps) {
 
   const defaultChecked = checked ? checked : false;
   const [isChecked, setIsChecked] = useState(defaultChecked);
+
+  function handleCheckTask() {
+    onTaskStatusChange(id, !checked);
+  }
 
   function handleCheckboxClick() {
     setIsChecked(!isChecked);
@@ -29,6 +34,7 @@ export function TasksList({ id, content, checked, onDeleteTasks }: TasksListProp
             onChange={handleCheckboxClick}
             type='checkbox'
             checked={isChecked}
+            onClick={handleCheckTask}
           />
         </label>
       </div>

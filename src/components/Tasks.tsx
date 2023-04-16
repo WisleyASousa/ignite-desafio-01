@@ -43,10 +43,15 @@ interface TasksType {
 
 export function Tasks({ id, content, status }:TasksType) {
 
-  const [tasks, setTasks] = useState<TasksType[]>([]);;
-  
+  const [tasks, setTasks] = useState<TasksType[]>([]);
 
-  const [newTaskText, setNewTaskText] = useState('')
+  const [tasksCreated, setTasksCreated] = useState(0);
+
+  const [tasksCompleted, setTasksCompleted] = useState(0);
+
+  const [tasksDeleted, setTasksDeleted] = useState(0);
+
+  const [newTaskText, setNewTaskText] = useState('');
 
 
   function handleCreateNewTask(event: FormEvent) {
@@ -54,6 +59,7 @@ export function Tasks({ id, content, status }:TasksType) {
 
     setTasks([{id:uuidv4(), content:newTaskText, status: false}, ...tasks]);
     setNewTaskText('');
+    setTasksCreated(tasksCreated + 1);
   }
 
   function handleNewTaskChange(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -71,6 +77,23 @@ export function Tasks({ id, content, status }:TasksType) {
     })
     
     setTasks(tasksWithoutDeleteOne);
+    setTasksDeleted(tasksDeleted + 1);
+
+    if (tasksCompleted > 0) {
+      setTasksCompleted(tasksCompleted - 1);
+    }
+  }
+
+  function handleTaskStatusChange(id: string, checked: boolean) {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === id) {
+        task.status = checked;
+      }
+      return task;
+    });
+    const completedTasks = updatedTasks.filter(task => task.status).length;
+    setTasks(updatedTasks);
+    setTasksCompleted(completedTasks);
   }
 
   const isNewTaskEmpty = newTaskText.length == 0;
@@ -100,11 +123,17 @@ export function Tasks({ id, content, status }:TasksType) {
 
           <div className={styles.infoContainer}>
             <div className={styles.infoTasks}>
-              <p>Tarefas criadas</p><span>0</span>
+              <p>Tarefas criadas</p>
+              <span>{tasksCreated}</span>
             </div>
 
             <div className={styles.infoTasks}>
-              <p className={styles.tasksCompleted}>Concluídas</p><span>0</span>
+              <p className={styles.tasksCompleted}>Concluídas</p>
+              <span>{tasksCompleted}</span>
+            </div>
+            <div className={styles.infoTasks}>
+              <p className={styles.tasksDeleted}>Deletadas</p>
+              <span>{tasksDeleted}</span>
             </div>
           </div>
 
@@ -122,6 +151,7 @@ export function Tasks({ id, content, status }:TasksType) {
                 checked={task.status}
                 content={task.content}
                 onDeleteTasks={deleteTasks}
+                onTaskStatusChange={handleTaskStatusChange}
               />
             )
           })}
