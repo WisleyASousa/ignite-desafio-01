@@ -10,7 +10,7 @@ interface TasksType {
   id: string,
   content: string,
   status: boolean,
-  dateCreated: Date | string
+  dateCreated: string
 }
 
 export function Tasks({ id, content, status }:TasksType) {

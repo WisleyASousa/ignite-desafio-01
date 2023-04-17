@@ -10,7 +10,7 @@ interface TasksListProps {
   onDeleteTasks: (tasks: string) => void;
   onTaskStatusChange: (id: string, checked: boolean) => void
   onDisable: boolean;
-  taskCreatedDate: Date | string;
+  taskCreatedDate:  string;
 }
 
 export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusChange, onDisable, taskCreatedDate }: TasksListProps) {
