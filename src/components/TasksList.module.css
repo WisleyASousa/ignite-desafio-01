@@ -37,6 +37,17 @@
   opacity: .6;
   text-decoration-line: line-through;
 }
+.boxOptionTask{
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  gap: .5rem;
+}
+.boxOptionTask p {
+  font-size: .875rem;
+  color: var(--gray-300);
+  opacity: .7;
+}
 .checkboxWrapper input {
   box-shadow: 0 0 0 0;
   border: 0 none;

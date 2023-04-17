@@ -10,9 +10,10 @@ interface TasksListProps {
   onDeleteTasks: (tasks: string) => void;
   onTaskStatusChange: (id: string, checked: boolean) => void
   onDisable: boolean;
+  taskCreatedDate: Date | string;
 }
 
-export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusChange, onDisable }: TasksListProps) {
+export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusChange, onDisable, taskCreatedDate }: TasksListProps) {
 
   const defaultChecked = checked ? checked : false;
   const [isChecked, setIsChecked] = useState(defaultChecked);
@@ -45,14 +46,17 @@ export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusCh
       <p className={isChecked ? styles.textTasksSucess : styles.textTasks} >
         {content}
       </p>
-      {onDisable ? null : <button 
-        title='Deletar Tarefa' 
-        className={styles.trashSvg} 
-        onClick={handleDeleteTasks}
-        disabled={!isChecked}
-      >
-        <Trash size={24} />
-      </button>}
+      <div className={styles.boxOptionTask}>
+        {onDisable ? null : <button 
+          title='Deletar Tarefa' 
+          className={styles.trashSvg} 
+          onClick={handleDeleteTasks}
+          disabled={!isChecked}
+          >
+          <Trash size={24} />
+        </button>}
+        <p>{taskCreatedDate}</p>
+      </div>
     </div>
   )
 }

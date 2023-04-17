@@ -10,7 +10,7 @@ export function App() {
     <div>
       <Header />
       <div className={styles.container}>
-        <Tasks id={''} content={''} status={false} />
+        <Tasks id={''} content={''} status={false} dateCreated={''} />
       </div>
       <Footer />
     </div>

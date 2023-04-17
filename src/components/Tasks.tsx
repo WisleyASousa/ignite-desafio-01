@@ -9,7 +9,8 @@ import { AlignLeft, Exclude, PlusCircle } from '@phosphor-icons/react'
 interface TasksType {
   id: string,
   content: string,
-  status: boolean
+  status: boolean,
+  dateCreated: Date | string
 }
 
 export function Tasks({ id, content, status }:TasksType) {
@@ -26,12 +27,20 @@ export function Tasks({ id, content, status }:TasksType) {
 
   const [newTaskText, setNewTaskText] = useState('');
 
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+  const dateCreated = `criada em ${day}/${month}/${year} - ${hour}:${minutes}:${seconds}`;
 
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
 
-    setTasks([{id:uuidv4(), content:newTaskText, status: false}, ...tasks]);
+    setTasks([{id:uuidv4(), content:newTaskText, status: false, dateCreated: dateCreated}, ...tasks]);
     setNewTaskText('');
     setTasksCreated(tasksCreated + 1);
   }
@@ -71,7 +80,7 @@ export function Tasks({ id, content, status }:TasksType) {
     setTasks(updatedTasks);
     setTasksCompleted(completedTasks);
   }
-  
+
   function handleOrganizeTasks() {
     const sortedList = tasks.sort((a, b) => {
       if (a.status === b.status) {
@@ -149,6 +158,7 @@ export function Tasks({ id, content, status }:TasksType) {
                 content={task.content}
                 onDeleteTasks={deleteTasks}
                 onTaskStatusChange={handleTaskStatusChange}
+                taskCreatedDate={task.dateCreated}
               />
             )
           })}
@@ -167,6 +177,7 @@ export function Tasks({ id, content, status }:TasksType) {
                 content={task.content}
                 onDeleteTasks={deleteTasks}
                 onTaskStatusChange={handleTaskStatusChange}
+                taskCreatedDate={task.dateCreated}
               />
             )
           })}
