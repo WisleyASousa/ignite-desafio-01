@@ -3,7 +3,7 @@ import clipboard from '../assets/clipboard.svg'
 import { TasksList } from './TasksList';
 import { v4 as uuidv4 } from 'uuid';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { Exclude, PlusCircle } from '@phosphor-icons/react'
+import { AlignLeft, Exclude, PlusCircle } from '@phosphor-icons/react'
 
 
 interface TasksType {
@@ -15,6 +15,8 @@ interface TasksType {
 export function Tasks({ id, content, status }:TasksType) {
 
   const [tasks, setTasks] = useState<TasksType[]>([]);
+  const [trashTasks, setTrashTasks] = useState<TasksType[]>([]);
+  const [sortedListTasks, setSortedListTasks] = useState<TasksType[]>([]);
 
   const [tasksCreated, setTasksCreated] = useState(0);
 
@@ -24,7 +26,6 @@ export function Tasks({ id, content, status }:TasksType) {
 
   const [newTaskText, setNewTaskText] = useState('');
 
-  const [trashTasks, setTrashTasks] = useState<TasksType[]>([]);
 
 
   function handleCreateNewTask(event: FormEvent) {
@@ -70,6 +71,19 @@ export function Tasks({ id, content, status }:TasksType) {
     setTasks(updatedTasks);
     setTasksCompleted(completedTasks);
   }
+  
+  function handleOrganizeTasks() {
+    const sortedList = tasks.sort((a, b) => {
+      if (a.status === b.status) {
+        return 0;
+      }
+      if (a.status && !b.status) {
+        return 1;
+      }
+      return -1;
+    });
+    setSortedListTasks(sortedList);
+  }
 
   const isNewTaskEmpty = newTaskText.length == 0;
   
@@ -106,8 +120,17 @@ export function Tasks({ id, content, status }:TasksType) {
               <p className={styles.tasksCompleted}>Concluídas</p>
               <span className={styles.spanCompleted}>{`${tasksCompleted} de ${tasks.length}`}</span>
             </div>
-            
           </div>
+
+          <button 
+            title='Organizar' 
+            className={styles.btnOrganize}
+            onClick={handleOrganizeTasks}
+          >
+            <AlignLeft size={28} />
+          </button>
+
+          
           {tasks.length === 0 && (
             <div className={styles.boxTasks}>
               <img src={clipboard} alt='Icone de uma caderneta' />
@@ -133,6 +156,7 @@ export function Tasks({ id, content, status }:TasksType) {
               <p className={styles.tasksDeleted}>Deletadas</p>
               <span>{tasksDeleted}</span>
           </div>
+          
           {trashTasks.map(task => {
             return (
               <TasksList
