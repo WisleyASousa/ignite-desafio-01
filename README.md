@@ -13,13 +13,13 @@ Este é um projeto inicial de um portfólio de frontend para uma "Lista de Taref
 ## :rocket: Rodando o projeto
 Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando para iniciar o projeto:
 ```
-Clone o repositório em sua máquina local.
+Clone o repositório em sua máquina local: git clone https://github.com/WisleyASousa/ignite-desafio-01.git
 ```
 ```
-Instale as dependências do projeto com o comando npm install.
+Instale as dependências do projeto com o comando: npm install.
 ```
 ```
-Execute o aplicativo com o comando npm run dev.
+Execute o aplicativo com o comando: npm run dev.
 ```
 Acesse o aplicativo online clicando no Link abaixo: 
 
