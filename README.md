@@ -27,9 +27,8 @@ Acesse o aplicativo online clicando no Link abaixo:
 
 
 ## :soon: Implementações futuras
-* Adicionar data das tarefas
 * Adicionar data para término da tarefa criada
-* Pode editar terafa criada
+* Poder editar terefa criada
 
 ## :handshake: Colaboradores
 <table>
