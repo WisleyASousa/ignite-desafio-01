@@ -28,13 +28,12 @@ export function Tasks({ id, content, status }:TasksType) {
   const [newTaskText, setNewTaskText] = useState('');
 
   const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
+  const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+  const month = date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
   const year = date.getFullYear();
-  const hour = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
-  const dateCreated = `criada em ${day}/${month}/${year} - ${hour}:${minutes}:${seconds}`;
+  const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
+  const minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+  const dateCreated = `criada em ${day}/${month}/${year} - ${hour}:${minutes}`;
 
 
   function handleCreateNewTask(event: FormEvent) {
@@ -101,6 +100,7 @@ export function Tasks({ id, content, status }:TasksType) {
         <div className={styles.containerForm}>
           <form onSubmit={handleCreateNewTask} className={styles.itemForm}>
             <textarea
+              maxLength={60}
               className={styles.boxText}
               placeholder='Nova tarefa'
               name='contentText'

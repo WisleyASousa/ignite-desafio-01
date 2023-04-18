@@ -43,9 +43,12 @@ export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusCh
           />
         </label>
       </div>
-      <p className={isChecked ? styles.textTasksSucess : styles.textTasks} >
-        {content}
-      </p>
+      <div className={styles.boxTasksTextsDate}>
+        <p className={isChecked ? styles.textTasksSucess : styles.textTasks} >
+          {content}
+        </p>
+        <p className={styles.TasksTextsDate}>{taskCreatedDate}</p>
+      </div>
       <div className={styles.boxOptionTask}>
         {onDisable ? null : <button 
           title='Deletar Tarefa' 
@@ -55,7 +58,6 @@ export function TasksList({ id, content, checked, onDeleteTasks,  onTaskStatusCh
           >
           <Trash size={24} />
         </button>}
-        <p>{taskCreatedDate}</p>
       </div>
     </div>
   )
