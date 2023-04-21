@@ -39,7 +39,14 @@ export function Tasks({ id, content, status }:TasksType) {
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
 
-    setTasks([{id:uuidv4(), content:newTaskText, status: false, dateCreated: dateCreated}, ...tasks]);
+    const newTask = {
+      id: uuidv4(),
+      content: newTaskText,
+      status: false,
+      dateCreated: dateCreated
+    }
+
+    setTasks((status) => [newTask, ...status]);
     setNewTaskText('');
     setTasksCreated(tasksCreated + 1);
   }
